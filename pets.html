@@ -3,63 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pets</title>
+    <title>Patitas - Tienda de mascotas</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
-        <h1>Tienda de mascotas</h1>
+        <div class="barra">
+            <a class="logo" href="pets.html">
+                <img src="fotos/logo.png" alt="logo de Patitas">
+                <span>Patitas</span>
+            </a>
+            <nav>
+                <a class="boton" href="pets.html">Inicio</a>
+                <a class="boton" href="productos.html">Productos</a>
+                <a class="boton" href="servicios.html">Servicios</a>
+                <a class="boton" href="nosotros.html">Nosotros</a>
+                <a class="boton" href="blogs.html">Blogs</a>
+                <a class="boton" href="contacto.html">Contacto</a>
+            </nav>
+        </div>
     </header>
 
-    <nav>
-        <a class="boton" href="pets.html">Inicio</a>
-        <a class="boton" href="servicios.html">Servicios</a>
-        <a class="boton" href="contacto.html">Contacto</a>
-    </nav>
-
-    <img class="banner" src="fotos/mascotas.png" alt="banner de mascotas">
-
-    <main class="contenedor">
-        <section class="card">
-            <h2>Historia</h2>
-            <p>La tienda se creo el año 2010 en Santiago. Sus fundadores son amantes de los animales.</p>
+    <main>
+        <section class="hero">
+            <div class="hero-texto">
+                <h1>Tienda de mascotas</h1>
+                <p>Somos una tienda de barrio en Santiago con todo lo que tu perro o gato necesita:
+                   alimento, juguetes, camas y accesorios. Tambien hacemos peluqueria y baño con hora
+                   reservada.</p>
+                <p>Despacho gratis en compras sobre $30.000.</p>
+                <a class="boton" href="productos.html">Ver productos</a>
+            </div>
+            <img src="fotos/mascotas.png" alt="perros y gatos de la tienda">
         </section>
 
-        <section class="card">
-            <h2>Ubicacion</h2>
-            <p>Tenemos un solo local, ubicado en Av. Don ramon 1234, Santiago.</p>
-            <p>Horario: lunes a sabado de 10:00 a 20:00.</p>
-        </section>
+        <section class="contenedor">
+            <article class="card">
+                <h2>Historia</h2>
+                <p>La tienda se creo el año 2010 en Santiago. Sus fundadores son amantes de los animales.</p>
+            </article>
 
-        <section class="card">
-            <h2>Productos y servicios</h2>
-            <p>Productos que vendemos:</p>
-            <ul>
-                <li>Comida para perros y gatos</li>
-                <li>Juguetes</li>
-                <li>Camas</li>
-                <li>Collares y correas</li>
-            </ul>
-            <p>Servicios:</p>
-            <ol>
-                <li>Peluqueria</li>
-                <li>Baño</li>
-                <li>Vacunas</li>
-            </ol>
-        </section>
+            <article class="card">
+                <h2>Ubicacion</h2>
+                <p>Tenemos un solo local, ubicado en Av. Don ramon 1234, Santiago.</p>
+                <p>Horario: lunes a sabado de 10:00 a 20:00.</p>
+            </article>
 
-        <section class="card">
-            <h2>Referencias</h2>
-            <ul>
-                <li><a href="https://www.sag.gob.cl/">SAG</a></li>
-                <li><a href="https://www.colegiomedicoveterinario.cl/">Colegio Medico Veterinario</a></li>
-                <li><a href="https://www.wsava.org/">WSAVA</a></li>
-            </ul>
+            <article class="card">
+                <h2>Despacho</h2>
+                <p>Enviamos a todo Chile con Starken. En Santiago la entrega demora entre 1 y 3 dias habiles.</p>
+            </article>
         </section>
     </main>
 
     <footer>
+        <p>Patitas | Av. Don Ramon 1234, Santiago | +56 2 2345 6789</p>
+        <ul>
+            <li><a href="productos.html">Alimentos</a></li>
+            <li><a href="productos.html">Juguetes</a></li>
+            <li><a href="productos.html">Accesorios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
         <p>2026 todos los derechos reservados a patitas.cl</p>
     </footer>
+
 </body>
 </html>
