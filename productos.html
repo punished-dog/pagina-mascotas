@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Patitas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="barra">
+            <a class="logo" href="pets.html">
+                <img src="fotos/logo.png" alt="logo de Patitas">
+                <span>Patitas</span>
+            </a>
+            <nav>
+                <a class="boton" href="pets.html">Inicio</a>
+                <a class="boton" href="productos.html">Productos</a>
+                <a class="boton" href="servicios.html">Servicios</a>
+                <a class="boton" href="nosotros.html">Nosotros</a>
+                <a class="boton" href="blogs.html">Blogs</a>
+                <a class="boton" href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="titulo">Productos</h1>
+
+        <div class="con-lateral">
+            <aside>
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="#" onclick="filtrar('todos')">Todos los productos</a></li>
+                    <li><a href="#" onclick="filtrar('Alimentos')">Alimentos</a></li>
+                    <li><a href="#" onclick="filtrar('Juguetes')">Juguetes</a></li>
+                    <li><a href="#" onclick="filtrar('Accesorios')">Accesorios</a></li>
+                    <li><a href="#" onclick="filtrar('Higiene')">Higiene</a></li>
+                </ul>
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="contacto.html">Escribenos</a></li>
+                    <li><a href="servicios.html">Nuestros servicios</a></li>
+                </ul>
+            </aside>
+
+            <section class="lista-productos">
+                <p class="centrado" id="categoriaActual">Mostrando todos los productos</p>
+                <div class="grilla" id="listaProductos"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Patitas | Av. Don Ramon 1234, Santiago | +56 2 2345 6789</p>
+        <p>2026 todos los derechos reservados a patitas.cl</p>
+    </footer>
+
+    <script src="js/productos.js"></script>
+    <script>
+        mostrarProductos("listaProductos", "todos", 0);
+
+        function filtrar(categoria) {
+            mostrarProductos("listaProductos", categoria, 0);
+
+            if (categoria == "todos") {
+                document.getElementById("categoriaActual").textContent = "Mostrando todos los productos";
+            } else {
+                document.getElementById("categoriaActual").textContent = "Categoria: " + categoria;
+            }
+        }
+    </script>
+</body>
+</html>

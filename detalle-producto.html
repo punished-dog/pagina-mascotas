@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del producto - Patitas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="barra">
+            <a class="logo" href="pets.html">
+                <img src="fotos/logo.png" alt="logo de Patitas">
+                <span>Patitas</span>
+            </a>
+            <nav>
+                <a class="boton" href="pets.html">Inicio</a>
+                <a class="boton" href="productos.html">Productos</a>
+                <a class="boton" href="servicios.html">Servicios</a>
+                <a class="boton" href="nosotros.html">Nosotros</a>
+                <a class="boton" href="blogs.html">Blogs</a>
+                <a class="boton" href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <p class="miga"><a href="pets.html">Inicio</a> &gt; <a href="productos.html">Productos</a> &gt; <span id="miga"></span></p>
+
+        <article class="detalle">
+            <img id="imagenProducto" src="fotos/producto1.png" alt="imagen del producto">
+
+            <div class="detalle-info">
+                <h2 id="nombreProducto"></h2>
+                <p class="precio" id="precioProducto"></p>
+                <p id="descripcionProducto"></p>
+                <p id="stockProducto"></p>
+
+                <label for="cantidad">Cantidad</label>
+                <select id="cantidad">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <button class="ancho-total" id="botonAgregar" onclick="agregarDesdeDetalle()">Añadir al carrito</button>
+            </div>
+        </article>
+
+        <section>
+            <h2 class="titulo">Productos relacionados</h2>
+            <div class="grilla" id="relacionados"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Patitas | Av. Don Ramon 1234, Santiago | +56 2 2345 6789</p>
+        <p>2026 todos los derechos reservados a patitas.cl</p>
+    </footer>
+
+    <script src="js/productos.js"></script>
+    <script>
+        // el id del producto viene en la direccion, por ejemplo detalle-producto.html?id=3
+        var idProducto = new URLSearchParams(window.location.search).get("id");
+        var producto = buscarProducto(idProducto);
+
+        if (producto == null) {
+            // si el id no existe se vuelve al listado
+            window.location.href = "productos.html";
+        } else {
+            document.title = producto.nombre + " - Patitas";
+            document.getElementById("miga").textContent = producto.nombre;
+            document.getElementById("imagenProducto").src = producto.imagen;
+            document.getElementById("imagenProducto").alt = producto.nombre;
+            document.getElementById("nombreProducto").textContent = producto.nombre;
+            document.getElementById("precioProducto").textContent = precioProducto(producto.precio);
+            document.getElementById("descripcionProducto").textContent = producto.descripcion;
+
+            if (producto.stock > 0) {
+                document.getElementById("stockProducto").textContent = "Quedan " + producto.stock + " unidades en la tienda.";
+            } else {
+                document.getElementById("stockProducto").textContent = "Producto sin stock.";
+                document.getElementById("botonAgregar").disabled = true;
+            }
+
+            mostrarProductos("relacionados", producto.categoria, 4, producto.id);
+        }
+
+        function agregarDesdeDetalle() {
+            var cantidad = Number(document.getElementById("cantidad").value);
+            agregarAlCarrito(producto.id, cantidad);
+        }
+    </script>
+</body>
+</html>

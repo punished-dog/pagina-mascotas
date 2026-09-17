@@ -37,6 +37,12 @@
             <img src="fotos/mascotas.png" alt="perros y gatos de la tienda">
         </section>
 
+        <section>
+            <h2 class="titulo">Lo mas vendido</h2>
+            <div class="grilla" id="listaDestacados"></div>
+            <p class="centrado"><a href="productos.html">Ver todo el catalogo</a></p>
+        </section>
+
         <section class="contenedor">
             <article class="card">
                 <h2>Historia</h2>
@@ -67,5 +73,10 @@
         <p>2026 todos los derechos reservados a patitas.cl</p>
     </footer>
 
+    <script src="js/productos.js"></script>
+    <script>
+        // en el home mostramos solo 4 productos
+        mostrarProductos("listaDestacados", "todos", 4);
+    </script>
 </body>
 </html>
