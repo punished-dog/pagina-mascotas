@@ -21,6 +21,7 @@
                 <a class="boton" href="blogs.html">Blogs</a>
                 <a class="boton" href="contacto.html">Contacto</a>
             </nav>
+            <a class="carrito" href="carrito.html">Carrito (<span id="contadorCarrito">0</span>)</a>
         </div>
     </header>
 
@@ -60,7 +61,10 @@
         <p>2026 todos los derechos reservados a patitas.cl</p>
     </footer>
 
+    <div class="aviso-flotante" id="avisoCarrito"></div>
+
     <script src="js/productos.js"></script>
+    <script src="js/carrito.js"></script>
     <script>
         // el id del producto viene en la direccion, por ejemplo detalle-producto.html?id=3
         var idProducto = new URLSearchParams(window.location.search).get("id");

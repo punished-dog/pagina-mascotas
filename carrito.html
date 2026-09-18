@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - Patitas</title>
+    <title>Mi carrito - Patitas</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -26,27 +26,27 @@
     </header>
 
     <main>
-        <h1 class="titulo">Noticias importantes</h1>
+        <h1 class="titulo">Mi carrito de compras</h1>
 
-        <article class="blog">
-            <div class="blog-texto">
-                <h2>Caso curioso #1</h2>
-                <p>Los perros pierden mas calor de lo que creemos en invierno, sobre todo los de pelo
-                   corto. Te contamos como saber si tu mascota esta pasando frio en la casa.</p>
-                <a class="boton" href="blog1.html">Ver caso</a>
-            </div>
-            <img src="fotos/blog1.png" alt="perro abrigado en invierno">
-        </article>
+        <div class="carrito-caja">
+            <section class="carrito-items" id="listaCarrito"></section>
 
-        <article class="blog">
-            <div class="blog-texto">
-                <h2>Caso curioso #2</h2>
-                <p>Adoptar no es solo llevarse un animal a la casa. Estas son las preguntas que
-                   conviene responder antes de adoptar un perro o un gato.</p>
-                <a class="boton" href="blog2.html">Ver caso</a>
-            </div>
-            <img src="fotos/blog2.png" alt="gato adoptado">
-        </article>
+            <aside class="resumen">
+                <h3>Resumen</h3>
+                <p><span>Subtotal</span> <span id="subtotal">$0</span></p>
+                <p><span>Descuento</span> <span id="descuento">$0</span></p>
+                <p><span>Despacho</span> <span id="despacho">Gratis</span></p>
+                <p class="total"><span>Total</span> <span id="totalCarrito">$0</span></p>
+
+                <label for="cupon">Ingresa el cupon de descuento</label>
+                <input type="text" id="cupon" placeholder="PATITAS10">
+                <button class="boton-gris ancho-total" onclick="aplicarCupon()">Aplicar cupon</button>
+                <div id="mensajeCupon"></div>
+
+                <button class="ancho-total" onclick="pagar()">Pagar</button>
+                <button class="boton-rojo ancho-total" onclick="vaciarCarrito()">Vaciar carrito</button>
+            </aside>
+        </div>
     </main>
 
     <footer>
@@ -56,5 +56,8 @@
 
     <script src="js/productos.js"></script>
     <script src="js/carrito.js"></script>
+    <script>
+        mostrarCarrito();
+    </script>
 </body>
 </html>
