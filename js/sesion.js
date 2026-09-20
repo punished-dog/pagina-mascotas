@@ -81,9 +81,43 @@ function mostrarSesion() {
 
     var html = "Hola " + usuario.nombre + " (" + usuario.tipo + ") ";
 
+    if (usuario.tipo == "Administrador" || usuario.tipo == "Vendedor") {
+        html += "| <a href='admin/home.html'>Administrador</a> ";
+    }
 
     html += "| <a href='#' onclick='cerrarSesion(\"pets.html\")'>Cerrar sesion</a>";
     caja.innerHTML = html;
+}
+
+// las paginas del administrador llaman a esta funcion,
+// si no hay sesion o es un cliente lo devuelve a la tienda
+function protegerAdmin() {
+    var usuario = usuarioActivo();
+
+    if (usuario == null) {
+        alert("Debes iniciar sesion para entrar al administrador.");
+        window.location.href = "../login.html";
+        return;
+    }
+
+    if (usuario.tipo == "Cliente") {
+        alert("Tu perfil no tiene permisos para entrar al administrador.");
+        window.location.href = "../pets.html";
+        return;
+    }
+
+    var saludo = document.getElementById("saludoAdmin");
+    if (saludo != null) {
+        saludo.textContent = "Hola " + usuario.nombre + ", perfil " + usuario.tipo;
+    }
+
+    // el vendedor solo puede ver productos, asi que le escondemos los usuarios
+    if (usuario.tipo == "Vendedor") {
+        var opciones = document.getElementsByClassName("solo-admin");
+        for (var i = 0; i < opciones.length; i++) {
+            opciones[i].style.display = "none";
+        }
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {

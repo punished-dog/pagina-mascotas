@@ -372,6 +372,44 @@ function guardarUsuarioFormulario(esRegistro) {
     return false;
 }
 
+// ---------- formulario de productos (administrador) ----------
+
+function validarProducto() {
+    var ok = true;
+
+    if (validarTexto("codigo", 20, true, "codigo") == false) {
+        ok = false;
+    } else if (document.getElementById("codigo").value.trim().length < 3) {
+        mostrarError("codigo", "El codigo debe tener al menos 3 caracteres.");
+        ok = false;
+    }
+
+    if (validarTexto("nombre", 100, true, "nombre") == false) {
+        ok = false;
+    }
+    if (validarTexto("descripcion", 500, false, "descripcion") == false) {
+        ok = false;
+    }
+    if (validarNumero("precio", 0, false, true, "precio") == false) {
+        ok = false;
+    }
+    if (validarNumero("stock", 0, true, true, "stock") == false) {
+        ok = false;
+    }
+    if (validarNumero("stockCritico", 0, true, false, "stock critico") == false) {
+        ok = false;
+    }
+    if (validarSelect("categoria", "categoria") == false) {
+        ok = false;
+    }
+
+    if (ok == false) {
+        return false;
+    }
+
+    return guardarProductoFormulario();
+}
+
 // ---------- validacion mientras el usuario escribe ----------
 // se llama desde cada pagina indicando que campos revisar
 function activarValidacionEnVivo(campos) {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del producto - Administrador</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-cuerpo">
+        <nav class="menu-lateral">
+            <a class="logo" href="home.html">
+                <img src="../fotos/logo.png" alt="logo de Patitas">
+                <span>Patitas</span>
+            </a>
+            <ul>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a class="activo" href="productos.html">Productos</a></li>
+                <li class="solo-admin"><a href="producto-nuevo.html">Nuevo producto</a></li>
+                <li class="solo-admin"><a href="usuarios.html">Usuarios</a></li>
+                <li class="solo-admin"><a href="usuario-nuevo.html">Nuevo usuario</a></li>
+                <li><a href="../pets.html">Ver la tienda</a></li>
+                <li><a href="#" onclick="cerrarSesion('../login.html')">Cerrar sesion</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-contenido">
+            <div class="admin-titulo">
+                <h1>Detalle del producto</h1>
+                <div>
+                    <a class="boton solo-admin" id="editarProducto" href="#">Editar</a>
+                    <a class="boton" href="productos.html">Volver al listado</a>
+                </div>
+            </div>
+
+            <div class="tabla-scroll">
+                <table>
+                    <tbody id="detalleProducto"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/productos.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        protegerAdmin();
+        verProducto();
+    </script>
+</body>
+</html>
