@@ -110,9 +110,18 @@
     <script src="js/carrito.js"></script>
     <script src="js/sesion.js"></script>
     <script src="js/regiones.js"></script>
+    <script src="js/validaciones.js"></script>
     <script>
         cargarRegiones("region", "comuna");
 
+        activarValidacionEnVivo([
+            { id: "run", funcion: function () { validarRun("run"); } },
+            { id: "nombre", funcion: function () { validarTexto("nombre", 50, true, "nombre"); } },
+            { id: "apellidos", funcion: function () { validarTexto("apellidos", 100, true, "apellidos"); } },
+            { id: "correo", funcion: function () { validarCorreo("correo"); } },
+            { id: "password", funcion: function () { validarPassword("password"); } },
+            { id: "direccion", funcion: function () { validarTexto("direccion", 300, true, "direccion"); } }
+        ]);
     </script>
 </body>
 </html>

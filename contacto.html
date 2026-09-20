@@ -76,5 +76,13 @@
     <script src="js/productos.js"></script>
     <script src="js/carrito.js"></script>
     <script src="js/sesion.js"></script>
-    </body>
+    <script src="js/validaciones.js"></script>
+    <script>
+        activarValidacionEnVivo([
+            { id: "nombre", funcion: function () { validarTexto("nombre", 100, true, "nombre"); } },
+            { id: "correo", funcion: function () { validarCorreo("correo"); } },
+            { id: "comentario", funcion: function () { validarTexto("comentario", 500, true, "comentario"); } }
+        ]);
+    </script>
+</body>
 </html>
