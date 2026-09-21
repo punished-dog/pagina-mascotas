@@ -3,11 +3,39 @@
 Proyecto de la Evaluacion Parcial 1 de Desarrollo Fullstack II (DSY1104).
 Es una tienda online hecha con HTML5, CSS y JavaScript, sin frameworks.
 
+El panel de administracion ya no esta en este repositorio, se movio a
+`patitas-admin`.
+
 ## Como ejecutarlo
 
 Se abre `pets.html` directamente en el navegador. Para que el localStorage
 funcione bien conviene levantarlo con un servidor local, por ejemplo con la
 extension Live Server de Visual Studio Code.
+
+## Enlace con el panel de administracion
+
+La ruta hacia el panel esta en `js/config.js`:
+
+```js
+var URL_ADMIN = "../patitas-admin/index.html";
+```
+
+El valor por defecto asume que los dos repositorios estan clonados uno al lado
+del otro y que Live Server se levanta en la carpeta que los contiene:
+
+```
+carpeta-del-proyecto/
+├── pagina-mascotas/
+└── patitas-admin/
+```
+
+Si se publican en otra parte (por ejemplo GitHub Pages), hay que cambiar esa ruta
+por la direccion completa del panel, y en el repositorio del panel cambiar
+`URL_TIENDA` y `URL_LOGIN` de la misma forma.
+
+Importante: el localStorage no se comparte entre dominios distintos. Si la tienda
+y el panel quedan en direcciones diferentes, cada uno tendra su propia copia de
+los usuarios y los productos.
 
 ## Estructura
 
@@ -24,21 +52,16 @@ pagina-mascotas/
 ├── blogs.html             listado de blogs
 ├── blog1.html, blog2.html detalle de cada blog
 ├── contacto.html          formulario de contacto
-├── admin/                 panel de administracion
-│   ├── home.html
-│   ├── productos.html, producto-nuevo.html, producto-editar.html, producto-ver.html
-│   └── usuarios.html, usuario-nuevo.html, usuario-editar.html
 ├── css/
 │   ├── estilos.css        estilos generales
-│   ├── responsive.css     media queries para tablet y celular
-│   └── admin.css          estilos del panel
+│   └── responsive.css     media queries para tablet y celular
 ├── js/
+│   ├── config.js          ruta hacia el panel de administracion
 │   ├── productos.js       arreglo de productos y funciones para mostrarlos
 │   ├── carrito.js         carrito con localStorage
 │   ├── validaciones.js    validaciones de los formularios
 │   ├── regiones.js        arreglo de regiones y comunas
-│   ├── sesion.js          usuarios, roles y sesion
-│   └── admin.js           mantenedor de productos y usuarios
+│   └── sesion.js          usuarios, roles y sesion
 └── fotos/                 imagenes del sitio
 ```
 
@@ -52,10 +75,12 @@ pagina-mascotas/
 
 Los perfiles funcionan asi:
 
-- Administrador: entra a todo el panel.
-- Vendedor: solo ve el listado y el detalle de los productos, el resto de las
-  opciones se esconden.
-- Cliente: solo entra a la tienda, si intenta abrir el panel lo devuelve al home.
+- Cliente: compra en la tienda.
+- Administrador y Vendedor: ademas les aparece el enlace al panel en la barra de
+  sesion, y al iniciar sesion se les manda directo al panel.
+
+Los usuarios que se crean desde `registro.html` quedan siempre como Cliente. Los
+otros perfiles se crean desde el panel de administracion.
 
 ## Validaciones
 
@@ -63,12 +88,10 @@ Los perfiles funcionan asi:
   o @gmail.com.
 - Contraseña: entre 4 y 10 caracteres.
 - Contacto: nombre obligatorio (100), comentario obligatorio (500).
-- Usuario: run sin puntos ni guion entre 7 y 9 caracteres y con el digito
+- Registro: run sin puntos ni guion entre 7 y 9 caracteres y con el digito
   verificador calculado con modulo 11, nombre (50), apellidos (100), direccion
-  (300), region y comuna enlazadas, fecha de nacimiento opcional.
-- Producto: codigo minimo 3 caracteres, nombre (100), descripcion opcional (500),
-  precio mayor o igual a 0 y puede tener decimales, stock entero mayor o igual a
-  0, stock critico opcional y categoria obligatoria.
+  (300), region y comuna enlazadas, confirmacion de contraseña, fecha de
+  nacimiento opcional.
 
 Todas se revisan mientras el usuario escribe y otra vez al enviar el formulario.
 
@@ -80,8 +103,8 @@ Todas se revisan mientras el usuario escribe y otra vez al enviar el formulario.
 - Cupones: PATITAS10 descuenta 10% y MASCOTA5 descuenta 5%.
 - Para pagar hay que tener la sesion iniciada.
 
-El carrito se guarda en localStorage con la clave `carrito`, los productos del
-administrador en `productos` y los usuarios en `usuarios`.
+El carrito se guarda en localStorage con la clave `carrito`, los productos que
+edita el administrador en `productos` y los usuarios en `usuarios`.
 
 ## Pendiente para las proximas entregas
 
