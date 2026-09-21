@@ -1,0 +1,131 @@
+/* ajustes para pantallas medianas (tablet) */
+@media (max-width: 900px) {
+    .barra {
+        justify-content: center;
+    }
+
+    .logo {
+        margin-bottom: 8px;
+    }
+
+    .sesion {
+        text-align: center;
+    }
+
+    .hero-texto h1 {
+        font-size: 32px;
+    }
+
+    .producto {
+        width: 200px;
+    }
+
+    aside {
+        width: 100%;
+        margin: 12px 0;
+    }
+
+    .con-lateral {
+        display: block;
+    }
+
+    .menu-lateral {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .admin-cuerpo {
+        display: block;
+    }
+}
+
+/* ajustes para celulares */
+@media (max-width: 600px) {
+    .barra {
+        flex-direction: column;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .boton {
+        margin: 4px 0;
+    }
+
+    .carrito {
+        margin-top: 10px;
+    }
+
+    .hero {
+        padding: 15px;
+    }
+
+    .hero-texto {
+        width: 100%;
+    }
+
+    .hero-texto h1 {
+        font-size: 28px;
+    }
+
+    .card {
+        width: 100%;
+        margin: 12px 0;
+        box-sizing: border-box;
+    }
+
+    .contenedor {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .producto {
+        width: 100%;
+    }
+
+    .grilla {
+        padding: 0 15px;
+    }
+
+    .linea-carrito {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .linea-carrito img {
+        margin: 0 0 10px 0;
+    }
+
+    .cantidad {
+        justify-content: center;
+    }
+
+    .formulario {
+        margin: 20px 15px;
+        padding: 15px;
+    }
+
+    .detalle-info {
+        padding: 15px 0 0 0;
+    }
+
+    .blog-texto {
+        padding: 15px 0 0 0;
+    }
+
+    .video iframe {
+        height: 220px;
+    }
+
+    /* las tablas del administrador se pueden desplazar de lado */
+    .tabla-scroll {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}
