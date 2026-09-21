@@ -1,4 +1,3 @@
-// arreglo con las regiones y sus comunas, se usa en los formularios de usuario
 var regiones = [
     {
         nombre: "Region de Arica y Parinacota",
@@ -66,7 +65,6 @@ var regiones = [
     }
 ];
 
-// llena el select de regiones y deja el de comunas listo
 function cargarRegiones(idRegion, idComuna) {
     var selectRegion = document.getElementById(idRegion);
     var selectComuna = document.getElementById(idComuna);
@@ -82,7 +80,6 @@ function cargarRegiones(idRegion, idComuna) {
         selectRegion.appendChild(opcion);
     }
 
-    // cuando cambia la region se cargan las comunas de esa region
     selectRegion.addEventListener("change", function () {
         cargarComunas(selectRegion.value, selectComuna);
     });

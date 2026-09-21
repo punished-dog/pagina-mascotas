@@ -1,4 +1,3 @@
-// arreglo con los productos de la tienda
 var productos = [
     {
         id: 1,
@@ -90,12 +89,10 @@ var productos = [
     }
 ];
 
-// deja el precio con puntos, ejemplo 24990 queda $24.990
 function formatoPrecio(valor) {
     return "$" + valor.toLocaleString("es-CL");
 }
 
-// los productos que valen 0 se muestran como gratis
 function precioProducto(valor) {
     if (valor == 0) {
         return "Gratis";
@@ -103,7 +100,6 @@ function precioProducto(valor) {
     return formatoPrecio(valor);
 }
 
-// busca un producto en el arreglo segun su id
 function buscarProducto(id) {
     var lista = obtenerProductos();
     for (var i = 0; i < lista.length; i++) {
@@ -114,8 +110,6 @@ function buscarProducto(id) {
     return null;
 }
 
-// si el administrador modifico los productos se usan los guardados,
-// si no se usa el arreglo de arriba
 function obtenerProductos() {
     var guardados = localStorage.getItem("productos");
     if (guardados == null) {
@@ -124,10 +118,6 @@ function obtenerProductos() {
     return JSON.parse(guardados);
 }
 
-// arma las tarjetas de productos dentro del contenedor que se le indique
-// categoria: si viene "todos" muestra todo, si no filtra
-// limite: cuantos productos mostrar como maximo (0 = todos)
-// excluir: id de un producto que no se quiere mostrar (se usa en los relacionados)
 function mostrarProductos(idContenedor, categoria, limite, excluir) {
     var contenedor = document.getElementById(idContenedor);
     if (contenedor == null) {

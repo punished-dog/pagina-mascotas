@@ -1,11 +1,7 @@
-// funciones del administrador: mantenedor de productos y de usuarios
-// los datos se guardan en localStorage porque todavia no tenemos base de datos
-
 function guardarProductos(lista) {
     localStorage.setItem("productos", JSON.stringify(lista));
 }
 
-// numeros que se muestran en el home del administrador
 function mostrarResumenAdmin() {
     var listaProductos = obtenerProductos();
     var listaUsuarios = obtenerUsuarios();
@@ -32,8 +28,6 @@ function mostrarResumenAdmin() {
         aviso.style.display = "none";
     }
 }
-
-// ---------- productos ----------
 
 function mostrarTablaProductos() {
     var cuerpo = document.getElementById("tablaProductos");
@@ -71,7 +65,6 @@ function mostrarTablaProductos() {
 
     cuerpo.innerHTML = html;
 
-    // si entro un vendedor se vuelven a esconder los enlaces de la tabla
     protegerAdmin();
 }
 
@@ -93,7 +86,6 @@ function eliminarProducto(id) {
     mostrarTablaProductos();
 }
 
-// carga los datos del producto cuando se entra a editar
 function cargarProducto() {
     var id = new URLSearchParams(window.location.search).get("id");
     var producto = buscarProducto(id);
@@ -114,7 +106,6 @@ function cargarProducto() {
     document.getElementById("categoria").value = producto.categoria;
 }
 
-// muestra el detalle del producto en la vista "ver"
 function verProducto() {
     var id = new URLSearchParams(window.location.search).get("id");
     var p = buscarProducto(id);
@@ -137,7 +128,6 @@ function verProducto() {
     document.getElementById("editarProducto").href = "producto-editar.html?id=" + p.id;
 }
 
-// se llama desde validaciones.js despues de revisar los campos
 function guardarProductoFormulario() {
     var lista = obtenerProductos();
     var campoId = document.getElementById("idOriginal");
@@ -164,7 +154,6 @@ function guardarProductoFormulario() {
             }
         }
     } else {
-        // el id nuevo es el mayor que exista mas uno
         var mayor = 0;
         for (var j = 0; j < lista.length; j++) {
             if (lista[j].id > mayor) {
@@ -179,8 +168,6 @@ function guardarProductoFormulario() {
     window.location.href = "productos.html";
     return false;
 }
-
-// ---------- usuarios ----------
 
 function mostrarTablaUsuarios() {
     var cuerpo = document.getElementById("tablaUsuarios");
@@ -233,7 +220,6 @@ function eliminarUsuario(run) {
     mostrarTablaUsuarios();
 }
 
-// carga los datos del usuario cuando se entra a editar
 function cargarUsuario() {
     var run = new URLSearchParams(window.location.search).get("run");
     var lista = obtenerUsuarios();

@@ -1,11 +1,3 @@
-// carrito de compras, se guarda en el localStorage del navegador
-// reglas que definimos:
-// - no se puede agregar mas cantidad que el stock del producto
-// - la cantidad minima es 1, si baja de ahi el producto se elimina
-// - el despacho cuesta $3.990 y es gratis sobre $30.000
-// - cupones: PATITAS10 descuenta 10% y MASCOTA5 descuenta 5%
-// - para pagar hay que tener la sesion iniciada
-
 var COSTO_DESPACHO = 3990;
 var MONTO_DESPACHO_GRATIS = 30000;
 
@@ -59,7 +51,6 @@ function agregarAlCarrito(id, cantidad) {
     avisarAgregado(producto.nombre);
 }
 
-// muestra un mensaje abajo a la derecha por unos segundos
 function avisarAgregado(nombre) {
     var caja = document.getElementById("avisoCarrito");
     if (caja == null) {
@@ -121,7 +112,6 @@ function vaciarCarrito() {
     actualizarContador();
 }
 
-// suma las unidades y las escribe al lado del carrito del menu
 function actualizarContador() {
     var carrito = obtenerCarrito();
     var total = 0;
@@ -136,7 +126,6 @@ function actualizarContador() {
     }
 }
 
-// dibuja las lineas del carrito en carrito.html
 function mostrarCarrito() {
     var contenedor = document.getElementById("listaCarrito");
     if (contenedor == null) {
@@ -242,7 +231,6 @@ function pagar() {
     vaciarCarrito();
 }
 
-// cada vez que carga una pagina se actualiza el numero del carrito
 document.addEventListener("DOMContentLoaded", function () {
     actualizarContador();
 });

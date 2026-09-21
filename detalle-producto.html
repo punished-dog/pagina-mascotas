@@ -69,12 +69,10 @@
     <script src="js/carrito.js"></script>
     <script src="js/sesion.js"></script>
     <script>
-        // el id del producto viene en la direccion, por ejemplo detalle-producto.html?id=3
         var idProducto = new URLSearchParams(window.location.search).get("id");
         var producto = buscarProducto(idProducto);
 
         if (producto == null) {
-            // si el id no existe se vuelve al listado
             window.location.href = "productos.html";
         } else {
             document.title = producto.nombre + " - Patitas";

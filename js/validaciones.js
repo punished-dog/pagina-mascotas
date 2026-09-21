@@ -1,8 +1,5 @@
-// validaciones de los formularios de la tienda y del administrador
-// los correos permitidos son los que pide el enunciado
 var correosPermitidos = ["@duoc.cl", "@profesor.duoc.cl", "@gmail.com"];
 
-// muestra el mensaje de error debajo del campo y lo marca en rojo
 function mostrarError(idCampo, mensaje) {
     var campo = document.getElementById(idCampo);
     var caja = document.getElementById("error-" + idCampo);
@@ -45,8 +42,6 @@ function correoValido(correo) {
     return false;
 }
 
-// ---------- validaciones de un campo a la vez ----------
-
 function validarCorreo(idCampo) {
     var valor = document.getElementById(idCampo).value.trim();
 
@@ -86,7 +81,6 @@ function validarTexto(idCampo, maximo, obligatorio, nombreCampo) {
     return mostrarError(idCampo, "");
 }
 
-// calcula el digito verificador con el modulo 11
 function calcularDv(numero) {
     var suma = 0;
     var multiplo = 2;
@@ -172,8 +166,6 @@ function validarNumero(idCampo, minimo, entero, obligatorio, nombreCampo) {
     return mostrarError(idCampo, "");
 }
 
-// ---------- formulario de inicio de sesion ----------
-
 function validarLogin() {
     var ok = true;
 
@@ -211,8 +203,6 @@ function validarLogin() {
     return false;
 }
 
-// ---------- formulario de contacto ----------
-
 function validarContacto() {
     var ok = true;
 
@@ -243,8 +233,6 @@ function validarContacto() {
     return false;
 }
 
-// ---------- formulario de registro / usuarios ----------
-
 function validarUsuario(esRegistro) {
     var ok = true;
 
@@ -270,14 +258,12 @@ function validarUsuario(esRegistro) {
         ok = false;
     }
 
-    // el tipo de usuario solo existe en el administrador
     if (document.getElementById("tipo") != null) {
         if (validarSelect("tipo", "tipo de usuario") == false) {
             ok = false;
         }
     }
 
-    // la contraseña se pide al crear, no al editar
     if (document.getElementById("password") != null) {
         if (validarPassword("password") == false) {
             ok = false;
@@ -311,7 +297,6 @@ function guardarUsuarioFormulario(esRegistro) {
     var editando = document.getElementById("runOriginal");
     var mensaje = document.getElementById("mensajeUsuario");
 
-    // no se puede repetir el correo de otra cuenta
     for (var i = 0; i < lista.length; i++) {
         var mismoUsuario = editando != null && lista[i].run == editando.value;
         if (lista[i].correo.toLowerCase() == correo.toLowerCase() && mismoUsuario == false) {
@@ -335,7 +320,6 @@ function guardarUsuarioFormulario(esRegistro) {
     };
 
     if (editando != null && editando.value != "") {
-        // estamos editando, se reemplaza el usuario que ya existia
         for (var j = 0; j < lista.length; j++) {
             if (lista[j].run == editando.value) {
                 if (usuario.password == "") {
@@ -349,7 +333,6 @@ function guardarUsuarioFormulario(esRegistro) {
         return false;
     }
 
-    // usuario nuevo, revisamos que el run no este repetido
     for (var k = 0; k < lista.length; k++) {
         if (lista[k].run == run) {
             mensaje.textContent = "Ese run ya esta registrado.";
@@ -371,8 +354,6 @@ function guardarUsuarioFormulario(esRegistro) {
 
     return false;
 }
-
-// ---------- formulario de productos (administrador) ----------
 
 function validarProducto() {
     var ok = true;
@@ -410,8 +391,6 @@ function validarProducto() {
     return guardarProductoFormulario();
 }
 
-// ---------- validacion mientras el usuario escribe ----------
-// se llama desde cada pagina indicando que campos revisar
 function activarValidacionEnVivo(campos) {
     for (var i = 0; i < campos.length; i++) {
         (function (campo) {

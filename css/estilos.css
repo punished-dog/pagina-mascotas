@@ -9,7 +9,6 @@ a {
     color: #ffb347;
 }
 
-/* barra de navegacion */
 .barra {
     display: flex;
     justify-content: space-between;
@@ -130,7 +129,6 @@ footer li {
     margin: 0 10px;
 }
 
-/* seccion principal del home */
 .hero {
     display: flex;
     align-items: center;
@@ -171,7 +169,6 @@ footer li {
     margin-top: 30px;
 }
 
-/* productos */
 .grilla {
     display: flex;
     flex-wrap: wrap;
@@ -248,7 +245,6 @@ button:hover {
     background-color: #963c3c;
 }
 
-/* barra lateral de categorias */
 .con-lateral {
     display: flex;
     flex-wrap: wrap;
@@ -289,7 +285,6 @@ aside a {
     flex: 1;
 }
 
-/* detalle de producto */
 .detalle {
     display: flex;
     flex-wrap: wrap;
@@ -324,7 +319,6 @@ aside a {
     color: #999999;
 }
 
-/* formularios */
 .formulario {
     max-width: 520px;
     background-color: #2d2d2d;
@@ -430,7 +424,6 @@ textarea {
     margin: 0 auto 10px auto;
 }
 
-/* carrito */
 .carrito-caja {
     display: flex;
     flex-wrap: wrap;
@@ -514,7 +507,6 @@ textarea {
     margin-top: 10px;
 }
 
-/* blogs */
 .blog {
     display: flex;
     flex-wrap: wrap;
@@ -560,7 +552,6 @@ textarea {
     color: #ffb347;
 }
 
-/* video */
 .video {
     max-width: 700px;
     margin: 20px auto;
@@ -574,7 +565,6 @@ textarea {
     border-radius: 10px;
 }
 
-/* tablas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -593,7 +583,6 @@ th {
     color: #ffb347;
 }
 
-/* mensaje que aparece al agregar algo al carrito */
 .aviso-flotante {
     display: none;
     position: fixed;

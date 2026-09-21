@@ -1,5 +1,3 @@
-// usuarios de prueba del sistema
-// los roles son: administrador, vendedor y cliente
 var usuariosIniciales = [
     {
         run: "190110222",
@@ -65,7 +63,6 @@ function cerrarSesion(ruta) {
     window.location.href = ruta;
 }
 
-// escribe arriba a la derecha si hay alguien conectado
 function mostrarSesion() {
     var caja = document.getElementById("barraSesion");
     if (caja == null) {
@@ -89,8 +86,6 @@ function mostrarSesion() {
     caja.innerHTML = html;
 }
 
-// las paginas del administrador llaman a esta funcion,
-// si no hay sesion o es un cliente lo devuelve a la tienda
 function protegerAdmin() {
     var usuario = usuarioActivo();
 
@@ -111,7 +106,6 @@ function protegerAdmin() {
         saludo.textContent = "Hola " + usuario.nombre + ", perfil " + usuario.tipo;
     }
 
-    // el vendedor solo puede ver productos, asi que le escondemos los usuarios
     if (usuario.tipo == "Vendedor") {
         var opciones = document.getElementsByClassName("solo-admin");
         for (var i = 0; i < opciones.length; i++) {
