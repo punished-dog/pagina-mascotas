@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - Administrador</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div class="admin-cuerpo">
+        <nav class="menu-lateral">
+            <a class="logo" href="home.html">
+                <img src="../fotos/logo.png" alt="logo de GuauMiau">
+                <span>GuauMiau</span>
+            </a>
+            <ul>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li class="solo-admin"><a href="producto-nuevo.html">Nuevo producto</a></li>
+                <li class="solo-admin"><a class="activo" href="usuarios.html">Usuarios</a></li>
+                <li class="solo-admin"><a href="usuario-nuevo.html">Nuevo usuario</a></li>
+                <li><a href="../pets.html">Ver la tienda</a></li>
+                <li><a href="#" onclick="cerrarSesion('../login.html')">Cerrar sesion</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-contenido">
+            <div class="admin-titulo">
+                <h1>Usuarios</h1>
+                <a class="boton" href="usuario-nuevo.html">Nuevo usuario</a>
+            </div>
+
+            <div class="tabla-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Run</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Perfil</th>
+                            <th>Comuna</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuarios"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/productos.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        protegerAdmin();
+        mostrarTablaUsuarios();
+    </script>
+</body>
+</html>

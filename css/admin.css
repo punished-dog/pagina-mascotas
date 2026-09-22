@@ -1,0 +1,101 @@
+.admin-cuerpo {
+    display: flex;
+    min-height: 100vh;
+}
+
+.menu-lateral {
+    width: 220px;
+    background-color: #1b1b1b;
+    border-right: 1px solid #444444;
+    padding: 20px 0;
+}
+
+.menu-lateral .logo {
+    padding: 0 15px 15px 15px;
+    font-size: 20px;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral li a {
+    display: block;
+    padding: 12px 20px;
+    color: #cccccc;
+    text-decoration: none;
+    border-left: 3px solid #1b1b1b;
+}
+
+.menu-lateral li a:hover {
+    background-color: #2d2d2d;
+    color: #ffb347;
+}
+
+.menu-lateral li a.activo {
+    color: #ffb347;
+    border-left: 3px solid #ffb347;
+    background-color: #2d2d2d;
+}
+
+.admin-contenido {
+    flex: 1;
+    padding: 25px;
+}
+
+.admin-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #444444;
+    padding-bottom: 12px;
+}
+
+.admin-titulo h1 {
+    color: #ffb347;
+    margin: 0;
+    font-size: 30px;
+}
+
+.tarjetas-admin {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tarjeta-dato {
+    background-color: #2d2d2d;
+    border: 1px solid #444444;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 180px;
+}
+
+.tarjeta-dato h3 {
+    margin: 0 0 8px 0;
+    color: #cccccc;
+    font-size: 15px;
+}
+
+.tarjeta-dato span {
+    font-size: 30px;
+    color: #ffb347;
+}
+
+.acciones a {
+    margin-right: 8px;
+    font-size: 13px;
+}
+
+.alerta-stock {
+    background-color: #402f2f;
+    border: 1px solid #ff6b6b;
+    color: #f0d0d0;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+}

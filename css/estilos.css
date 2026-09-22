@@ -83,7 +83,8 @@ nav {
 .banner {
     display: block;
     width: 100%;
-    max-width: 1024px;
+    max-width: 440px;
+    height: auto;
     margin: 0 auto 20px auto;
 }
 
@@ -101,6 +102,23 @@ nav {
     margin: 20px;
     border: 1px solid #444444;
     border-radius: 10px;
+}
+
+.card-ancho {
+    width: 100%;
+    max-width: 980px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.lista-enlaces {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 30px;
+    padding: 0;
+    margin: 0;
 }
 
 .card h2 {
@@ -134,16 +152,19 @@ footer li {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
     background-color: #2d2d2d;
     max-width: 1024px;
     margin: 20px auto;
     padding: 30px;
     border: 1px solid #444444;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .hero-texto {
-    width: 420px;
+    flex: 1 1 340px;
+    min-width: 280px;
     padding: 10px;
 }
 
@@ -158,8 +179,10 @@ footer li {
 }
 
 .hero img {
-    width: 450px;
-    max-width: 100%;
+    flex: 1 1 480px;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
     border-radius: 10px;
 }
 

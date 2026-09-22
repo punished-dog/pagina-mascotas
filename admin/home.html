@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - GuauMiau</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div class="admin-cuerpo">
+        <nav class="menu-lateral">
+            <a class="logo" href="home.html">
+                <img src="../fotos/logo.png" alt="logo de GuauMiau">
+                <span>GuauMiau</span>
+            </a>
+            <ul>
+                <li><a class="activo" href="home.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li class="solo-admin"><a href="producto-nuevo.html">Nuevo producto</a></li>
+                <li class="solo-admin"><a href="usuarios.html">Usuarios</a></li>
+                <li class="solo-admin"><a href="usuario-nuevo.html">Nuevo usuario</a></li>
+                <li><a href="../pets.html">Ver la tienda</a></li>
+                <li><a href="#" onclick="cerrarSesion('../login.html')">Cerrar sesion</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-contenido">
+            <div class="admin-titulo">
+                <h1>Hola Administrador</h1>
+                <span id="saludoAdmin"></span>
+            </div>
+
+            <section class="tarjetas-admin">
+                <article class="tarjeta-dato">
+                    <h3>Productos publicados</h3>
+                    <span id="totalProductos">0</span>
+                </article>
+                <article class="tarjeta-dato">
+                    <h3>Usuarios registrados</h3>
+                    <span id="totalUsuarios">0</span>
+                </article>
+                <article class="tarjeta-dato">
+                    <h3>Productos sin stock</h3>
+                    <span id="totalSinStock">0</span>
+                </article>
+            </section>
+
+            <div class="alerta-stock" id="avisoStock"></div>
+
+            <section>
+                <h2>Que puedes hacer aqui</h2>
+                <ul>
+                    <li>Revisar el listado de productos y ver el detalle de cada uno.</li>
+                    <li>Crear, editar o eliminar productos de la tienda.</li>
+                    <li>Administrar los usuarios y sus perfiles.</li>
+                </ul>
+                <p>Los datos se guardan en el navegador (localStorage) mientras no tengamos base de datos.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/productos.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        protegerAdmin();
+        mostrarResumenAdmin();
+    </script>
+</body>
+</html>

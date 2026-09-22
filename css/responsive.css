@@ -62,7 +62,12 @@
     }
 
     .hero-texto {
-        width: 100%;
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .hero img {
+        flex: 1 1 100%;
     }
 
     .hero-texto h1 {

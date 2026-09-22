@@ -3,39 +3,13 @@
 Proyecto de la Evaluacion Parcial 1 de Desarrollo Fullstack II (DSY1104).
 Es una tienda online hecha con HTML5, CSS y JavaScript, sin frameworks.
 
-El panel de administracion ya no esta en este repositorio, se movio a
-`pagina-mascotas-admin`.
+Incluye la tienda publica y el panel de administracion, en la carpeta `admin/`.
 
 ## Como ejecutarlo
 
 Se abre `pets.html` directamente en el navegador. Para que el localStorage
 funcione bien conviene levantarlo con un servidor local, por ejemplo con la
 extension Live Server de Visual Studio Code.
-
-## Enlace con el panel de administracion
-
-La ruta hacia el panel esta en `js/config.js`:
-
-```js
-var URL_ADMIN = "../pagina-mascotas-admin/index.html";
-```
-
-El valor por defecto asume que los dos repositorios estan clonados uno al lado
-del otro y que Live Server se levanta en la carpeta que los contiene:
-
-```
-carpeta-del-proyecto/
-├── pagina-mascotas/
-└── pagina-mascotas-admin/
-```
-
-Si se publican en otra parte (por ejemplo GitHub Pages), hay que cambiar esa ruta
-por la direccion completa del panel, y en el repositorio del panel cambiar
-`URL_TIENDA` y `URL_LOGIN` de la misma forma.
-
-Importante: el localStorage no se comparte entre dominios distintos. Si la tienda
-y el panel quedan en direcciones diferentes, cada uno tendra su propia copia de
-los usuarios y los productos.
 
 ## Estructura
 
@@ -47,22 +21,27 @@ pagina-mascotas/
 ├── carrito.html           carrito de compras
 ├── registro.html          registro de usuario
 ├── login.html             inicio de sesion
-├── nosotros.html          informacion de la tienda y del equipo
+├── nosotros.html          informacion de la tienda
 ├── servicios.html         servicios del local
 ├── blogs.html             listado de blogs
 ├── blog1.html, blog2.html detalle de cada blog
 ├── contacto.html          formulario de contacto
+├── admin/                 panel de administracion
+│   ├── home.html
+│   ├── productos.html, producto-nuevo.html, producto-editar.html, producto-ver.html
+│   └── usuarios.html, usuario-nuevo.html, usuario-editar.html
 ├── css/
 │   ├── estilos.css        estilos generales
-│   └── responsive.css     media queries para tablet y celular
+│   ├── responsive.css     media queries para tablet y celular
+│   └── admin.css          estilos del panel
 ├── js/
-│   ├── config.js          ruta hacia el panel de administracion
 │   ├── productos.js       arreglo de productos y funciones para mostrarlos
 │   ├── carrito.js         carrito con localStorage
 │   ├── validaciones.js    validaciones de los formularios
 │   ├── regiones.js        arreglo de regiones y comunas
-│   └── sesion.js          usuarios, roles y sesion
-└── fotos/                 imagenes del sitio (falta subir las definitivas)
+│   ├── sesion.js          usuarios, roles y sesion
+│   └── admin.js           mantenedor de productos y usuarios
+└── fotos/                 imagenes del sitio
 ```
 
 ## Usuarios de prueba
@@ -76,8 +55,12 @@ pagina-mascotas/
 Los perfiles funcionan asi:
 
 - Cliente: compra en la tienda.
-- Administrador y Vendedor: ademas les aparece el enlace al panel en la barra de
-  sesion, y al iniciar sesion se les manda directo al panel.
+- Administrador: entra a todo el panel.
+- Vendedor: en el panel solo ve el listado y el detalle de los productos, el
+  resto de las opciones se esconden.
+
+Al administrador y al vendedor les aparece el enlace al panel en la barra de
+sesion, y al iniciar sesion se les manda directo a `admin/home.html`.
 
 Los usuarios que se crean desde `registro.html` quedan siempre como Cliente. Los
 otros perfiles se crean desde el panel de administracion.
@@ -92,6 +75,9 @@ otros perfiles se crean desde el panel de administracion.
   verificador calculado con modulo 11, nombre (50), apellidos (100), direccion
   (300), region y comuna enlazadas, confirmacion de contraseña, fecha de
   nacimiento opcional.
+- Producto (panel): codigo minimo 3 caracteres, nombre (100), descripcion
+  opcional (500), precio mayor o igual a 0 y puede tener decimales, stock entero
+  mayor o igual a 0, stock critico opcional y categoria obligatoria.
 
 Todas se revisan mientras el usuario escribe y otra vez al enviar el formulario.
 
@@ -99,7 +85,7 @@ Todas se revisan mientras el usuario escribe y otra vez al enviar el formulario.
 
 - No se puede agregar mas cantidad que el stock del producto.
 - La cantidad minima es 1, si baja de ahi el producto se elimina.
-- El despacho cuesta $3.990 y es gratis en compras sobre $30.000.
+- El despacho cuesta $3.990 y es gratis en compras desde $30.000.
 - Cupones: GUAUMIAU10 descuenta 10% y MASCOTA5 descuenta 5%.
 - Para pagar hay que tener la sesion iniciada.
 
@@ -108,8 +94,4 @@ edita el administrador en `productos` y los usuarios en `usuarios`.
 
 ## Pendiente para las proximas entregas
 
-- Subir las fotos definitivas: el logo, las ocho imagenes de los productos y las
-  dos de los blogs. Las etiquetas img ya apuntan a esos nombres dentro de
-  `fotos/`, asi que solo falta dejar los archivos ahi.
-- Cambiar el video de la pagina Nosotros.
 - Conectar el sistema a una base de datos en vez de localStorage.

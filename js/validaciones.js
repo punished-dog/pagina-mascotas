@@ -192,7 +192,7 @@ function validarLogin() {
             if (lista[i].tipo == "Cliente") {
                 window.location.href = "pets.html";
             } else {
-                window.location.href = URL_ADMIN;
+                window.location.href = "admin/home.html";
             }
             return false;
         }
@@ -233,7 +233,7 @@ function validarContacto() {
     return false;
 }
 
-function validarUsuario() {
+function validarUsuario(esRegistro) {
     var ok = true;
 
     if (validarRun("run") == false) {
@@ -257,65 +257,138 @@ function validarUsuario() {
     if (validarTexto("direccion", 300, true, "direccion") == false) {
         ok = false;
     }
-    if (validarPassword("password") == false) {
-        ok = false;
+
+    if (document.getElementById("tipo") != null) {
+        if (validarSelect("tipo", "tipo de usuario") == false) {
+            ok = false;
+        }
     }
 
-    if (document.getElementById("password").value != document.getElementById("password2").value) {
-        mostrarError("password2", "Las contrase\u00f1as no son iguales.");
-        ok = false;
-    } else {
-        mostrarError("password2", "");
+    if (document.getElementById("password") != null) {
+        if (validarPassword("password") == false) {
+            ok = false;
+        }
+        if (document.getElementById("password2") != null) {
+            if (document.getElementById("password").value != document.getElementById("password2").value) {
+                mostrarError("password2", "Las contraseñas no son iguales.");
+                ok = false;
+            } else {
+                mostrarError("password2", "");
+            }
+        }
     }
 
     if (ok == false) {
         var aviso = document.getElementById("mensajeUsuario");
-        aviso.textContent = "Revisa los campos marcados en rojo antes de guardar.";
-        aviso.className = "aviso aviso-error";
+        if (aviso != null) {
+            aviso.textContent = "Revisa los campos marcados en rojo antes de guardar.";
+            aviso.className = "aviso aviso-error";
+        }
         return false;
     }
 
-    return guardarUsuarioFormulario();
+    return guardarUsuarioFormulario(esRegistro);
 }
 
-function guardarUsuarioFormulario() {
+function guardarUsuarioFormulario(esRegistro) {
     var lista = obtenerUsuarios();
     var correo = document.getElementById("correo").value.trim();
     var run = document.getElementById("run").value.trim().toUpperCase();
+    var editando = document.getElementById("runOriginal");
     var mensaje = document.getElementById("mensajeUsuario");
 
     for (var i = 0; i < lista.length; i++) {
-        if (lista[i].correo.toLowerCase() == correo.toLowerCase()) {
+        var mismoUsuario = editando != null && lista[i].run == editando.value;
+        if (lista[i].correo.toLowerCase() == correo.toLowerCase() && mismoUsuario == false) {
             mensaje.textContent = "Ya existe una cuenta registrada con ese correo.";
             mensaje.className = "aviso aviso-error";
             return false;
         }
-        if (lista[i].run == run) {
+    }
+
+    var usuario = {
+        run: run,
+        nombre: document.getElementById("nombre").value.trim(),
+        apellidos: document.getElementById("apellidos").value.trim(),
+        correo: correo,
+        password: document.getElementById("password") != null ? document.getElementById("password").value : "",
+        fechaNacimiento: document.getElementById("fechaNacimiento").value,
+        tipo: document.getElementById("tipo") != null ? document.getElementById("tipo").value : "Cliente",
+        region: document.getElementById("region").value,
+        comuna: document.getElementById("comuna").value,
+        direccion: document.getElementById("direccion").value.trim()
+    };
+
+    if (editando != null && editando.value != "") {
+        for (var j = 0; j < lista.length; j++) {
+            if (lista[j].run == editando.value) {
+                if (usuario.password == "") {
+                    usuario.password = lista[j].password;
+                }
+                lista[j] = usuario;
+            }
+        }
+        guardarUsuarios(lista);
+        window.location.href = "usuarios.html";
+        return false;
+    }
+
+    for (var k = 0; k < lista.length; k++) {
+        if (lista[k].run == run) {
             mensaje.textContent = "Ese run ya esta registrado.";
             mensaje.className = "aviso aviso-error";
             return false;
         }
     }
 
-    lista.push({
-        run: run,
-        nombre: document.getElementById("nombre").value.trim(),
-        apellidos: document.getElementById("apellidos").value.trim(),
-        correo: correo,
-        password: document.getElementById("password").value,
-        fechaNacimiento: document.getElementById("fechaNacimiento").value,
-        tipo: "Cliente",
-        region: document.getElementById("region").value,
-        comuna: document.getElementById("comuna").value,
-        direccion: document.getElementById("direccion").value.trim()
-    });
-
+    lista.push(usuario);
     guardarUsuarios(lista);
 
-    mensaje.textContent = "Cuenta creada. Ya puedes iniciar sesion.";
-    mensaje.className = "aviso";
-    document.getElementById("formUsuario").reset();
+    if (esRegistro == true) {
+        mensaje.textContent = "Cuenta creada. Ya puedes iniciar sesion.";
+        mensaje.className = "aviso";
+        document.getElementById("formUsuario").reset();
+    } else {
+        window.location.href = "usuarios.html";
+    }
+
     return false;
+}
+
+function validarProducto() {
+    var ok = true;
+
+    if (validarTexto("codigo", 20, true, "codigo") == false) {
+        ok = false;
+    } else if (document.getElementById("codigo").value.trim().length < 3) {
+        mostrarError("codigo", "El codigo debe tener al menos 3 caracteres.");
+        ok = false;
+    }
+
+    if (validarTexto("nombre", 100, true, "nombre") == false) {
+        ok = false;
+    }
+    if (validarTexto("descripcion", 500, false, "descripcion") == false) {
+        ok = false;
+    }
+    if (validarNumero("precio", 0, false, true, "precio") == false) {
+        ok = false;
+    }
+    if (validarNumero("stock", 0, true, true, "stock") == false) {
+        ok = false;
+    }
+    if (validarNumero("stockCritico", 0, true, false, "stock critico") == false) {
+        ok = false;
+    }
+    if (validarSelect("categoria", "categoria") == false) {
+        ok = false;
+    }
+
+    if (ok == false) {
+        return false;
+    }
+
+    return guardarProductoFormulario();
 }
 
 function activarValidacionEnVivo(campos) {
