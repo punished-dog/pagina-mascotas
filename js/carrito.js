@@ -176,7 +176,7 @@ function mostrarResumen(subtotal) {
     var cupon = localStorage.getItem("cupon");
     var descuento = 0;
 
-    if (cupon == "PATITAS10") {
+    if (cupon == "GUAUMIAU10") {
         descuento = Math.round(subtotal * 0.1);
     }
     if (cupon == "MASCOTA5") {
@@ -200,7 +200,7 @@ function aplicarCupon() {
     var codigo = document.getElementById("cupon").value.trim().toUpperCase();
     var mensaje = document.getElementById("mensajeCupon");
 
-    if (codigo == "PATITAS10" || codigo == "MASCOTA5") {
+    if (codigo == "GUAUMIAU10" || codigo == "MASCOTA5") {
         localStorage.setItem("cupon", codigo);
         mensaje.textContent = "Cupon aplicado.";
         mensaje.className = "aviso";

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del producto - Patitas</title>
+    <title>Detalle del producto - GuauMiau</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -11,8 +11,8 @@
     <header>
         <div class="barra">
             <a class="logo" href="pets.html">
-                <img src="fotos/logo.png" alt="logo de Patitas">
-                <span>Patitas</span>
+                <img src="fotos/logo.png" alt="logo de GuauMiau">
+                <span>GuauMiau</span>
             </a>
             <nav>
                 <a class="boton" href="pets.html">Inicio</a>
@@ -59,8 +59,8 @@
     </main>
 
     <footer>
-        <p>Patitas | Av. Don Ramon 1234, Santiago | +56 2 2345 6789</p>
-        <p>2026 todos los derechos reservados a patitas.cl</p>
+        <p>GuauMiau | Av. Don Ramon 1234, Santiago | +56 2 2345 6789</p>
+        <p>2026 todos los derechos reservados a guaumiau.cl</p>
     </footer>
 
     <div class="aviso-flotante" id="avisoCarrito"></div>
@@ -76,7 +76,7 @@
         if (producto == null) {
             window.location.href = "productos.html";
         } else {
-            document.title = producto.nombre + " - Patitas";
+            document.title = producto.nombre + " - GuauMiau";
             document.getElementById("miga").textContent = producto.nombre;
             document.getElementById("imagenProducto").src = producto.imagen;
             document.getElementById("imagenProducto").alt = producto.nombre;

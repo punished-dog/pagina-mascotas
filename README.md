@@ -1,10 +1,10 @@
-# Patitas - Tienda de mascotas
+# GuauMiau - Tienda de mascotas
 
 Proyecto de la Evaluacion Parcial 1 de Desarrollo Fullstack II (DSY1104).
 Es una tienda online hecha con HTML5, CSS y JavaScript, sin frameworks.
 
 El panel de administracion ya no esta en este repositorio, se movio a
-`patitas-admin`.
+`pagina-mascotas-admin`.
 
 ## Como ejecutarlo
 
@@ -17,7 +17,7 @@ extension Live Server de Visual Studio Code.
 La ruta hacia el panel esta en `js/config.js`:
 
 ```js
-var URL_ADMIN = "../patitas-admin/index.html";
+var URL_ADMIN = "../pagina-mascotas-admin/index.html";
 ```
 
 El valor por defecto asume que los dos repositorios estan clonados uno al lado
@@ -26,7 +26,7 @@ del otro y que Live Server se levanta en la carpeta que los contiene:
 ```
 carpeta-del-proyecto/
 ├── pagina-mascotas/
-└── patitas-admin/
+└── pagina-mascotas-admin/
 ```
 
 Si se publican en otra parte (por ejemplo GitHub Pages), hay que cambiar esa ruta
@@ -100,7 +100,7 @@ Todas se revisan mientras el usuario escribe y otra vez al enviar el formulario.
 - No se puede agregar mas cantidad que el stock del producto.
 - La cantidad minima es 1, si baja de ahi el producto se elimina.
 - El despacho cuesta $3.990 y es gratis en compras sobre $30.000.
-- Cupones: PATITAS10 descuenta 10% y MASCOTA5 descuenta 5%.
+- Cupones: GUAUMIAU10 descuenta 10% y MASCOTA5 descuenta 5%.
 - Para pagar hay que tener la sesion iniciada.
 
 El carrito se guarda en localStorage con la clave `carrito`, los productos que
