@@ -62,7 +62,7 @@ pagina-mascotas/
 │   ├── validaciones.js    validaciones de los formularios
 │   ├── regiones.js        arreglo de regiones y comunas
 │   └── sesion.js          usuarios, roles y sesion
-└── fotos/                 imagenes del sitio
+└── fotos/                 imagenes del sitio (falta subir las definitivas)
 ```
 
 ## Usuarios de prueba
@@ -108,6 +108,8 @@ edita el administrador en `productos` y los usuarios en `usuarios`.
 
 ## Pendiente para las proximas entregas
 
-- Reemplazar las imagenes de ejemplo por fotos reales de los productos.
+- Subir las fotos definitivas: el logo, las ocho imagenes de los productos y las
+  dos de los blogs. Las etiquetas img ya apuntan a esos nombres dentro de
+  `fotos/`, asi que solo falta dejar los archivos ahi.
 - Cambiar el video de la pagina Nosotros.
 - Conectar el sistema a una base de datos en vez de localStorage.
