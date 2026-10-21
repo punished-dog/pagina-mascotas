@@ -11,6 +11,12 @@ import Carrito from "./pages/tienda/Carrito";
 import Checkout from "./pages/tienda/Checkout";
 import CompraExito from "./pages/tienda/CompraExito";
 import CompraError from "./pages/tienda/CompraError";
+import Login from "./pages/tienda/Login";
+import Registro from "./pages/tienda/Registro";
+import Nosotros from "./pages/tienda/Nosotros";
+import Blogs from "./pages/tienda/Blogs";
+import DetalleBlog from "./pages/tienda/DetalleBlog";
+import Contacto from "./pages/tienda/Contacto";
 import NoEncontrado from "./pages/tienda/NoEncontrado";
 
 export default function App() {
@@ -29,6 +35,12 @@ export default function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/compra/exito/:id" element={<CompraExito />} />
             <Route path="/compra/error/:id" element={<CompraError />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={<Registro />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:id" element={<DetalleBlog />} />
+            <Route path="/contacto" element={<Contacto />} />
             <Route path="*" element={<NoEncontrado />} />
           </Route>
         </Routes>

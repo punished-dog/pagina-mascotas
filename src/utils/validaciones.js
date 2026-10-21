@@ -115,3 +115,29 @@ export function validarDatosCompra(datos) {
     indicaciones: validarTexto(datos.indicaciones, 300, false, "indicaciones")
   };
 }
+
+export function validarDatosUsuario(datos, esNuevo) {
+  const errores = {
+    run: esNuevo ? validarRun(datos.run) : "",
+    nombre: validarTexto(datos.nombre, 50, true, "nombre"),
+    apellidos: validarTexto(datos.apellidos, 100, true, "apellidos"),
+    correo: validarCorreo(datos.correo),
+    region: validarSeleccion(datos.region, "region"),
+    comuna: validarSeleccion(datos.comuna, "comuna"),
+    direccion: validarTexto(datos.direccion, 300, true, "direccion"),
+    password: validarPassword(datos.password, esNuevo),
+    confirmar: ""
+  };
+  if (datos.confirmar !== undefined && datos.password !== datos.confirmar) {
+    errores.confirmar = "Las contraseñas no coinciden.";
+  }
+  return errores;
+}
+
+export function validarContacto(datos) {
+  return {
+    nombre: validarTexto(datos.nombre, 100, true, "nombre"),
+    correo: validarCorreo(datos.correo),
+    comentario: validarTexto(datos.comentario, 500, true, "comentario")
+  };
+}

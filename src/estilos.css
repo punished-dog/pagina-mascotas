@@ -108,3 +108,14 @@ a {
   --bs-btn-hover-color: var(--marca-oscuro);
   --bs-btn-active-color: var(--marca-oscuro);
 }
+
+.banner-nosotros {
+  max-height: 320px;
+  object-fit: cover;
+}
+
+.imagen-blog {
+  min-height: 220px;
+  max-height: 280px;
+  object-fit: cover;
+}
