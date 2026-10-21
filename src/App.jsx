@@ -26,6 +26,10 @@ import EditorProducto from "./pages/admin/EditorProducto";
 import VerProducto from "./pages/admin/VerProducto";
 import ProductosCriticos from "./pages/admin/ProductosCriticos";
 import ReporteProductos from "./pages/admin/ReporteProductos";
+import OrdenesAdmin from "./pages/admin/OrdenesAdmin";
+import VerOrden from "./pages/admin/VerOrden";
+import CategoriasAdmin from "./pages/admin/CategoriasAdmin";
+import EditorCategoria from "./pages/admin/EditorCategoria";
 
 export default function App() {
   return (
@@ -60,6 +64,11 @@ export default function App() {
             <Route path="productos/reporte" element={<ReporteProductos />} />
             <Route path="productos/:id" element={<VerProducto />} />
             <Route path="productos/:id/editar" element={<RutaProtegida soloAdmin><EditorProducto /></RutaProtegida>} />
+            <Route path="ordenes" element={<OrdenesAdmin />} />
+            <Route path="ordenes/:id" element={<VerOrden />} />
+            <Route path="categorias" element={<RutaProtegida soloAdmin><CategoriasAdmin /></RutaProtegida>} />
+            <Route path="categorias/nueva" element={<RutaProtegida soloAdmin><EditorCategoria /></RutaProtegida>} />
+            <Route path="categorias/:id/editar" element={<RutaProtegida soloAdmin><EditorCategoria /></RutaProtegida>} />
           </Route>
         </Routes>
       </CarritoProvider>
