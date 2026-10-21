@@ -147,6 +147,9 @@ export default function Navbar() {
                 <NavLink className="nav-link" to="/ofertas">Ofertas</NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="/servicios">Servicios</NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/nosotros">Nosotros</NavLink>
               </li>
               <li className="nav-item">

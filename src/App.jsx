@@ -14,6 +14,7 @@ import CompraError from "./pages/tienda/CompraError";
 import Login from "./pages/tienda/Login";
 import Registro from "./pages/tienda/Registro";
 import Nosotros from "./pages/tienda/Nosotros";
+import Servicios from "./pages/tienda/Servicios";
 import Blogs from "./pages/tienda/Blogs";
 import DetalleBlog from "./pages/tienda/DetalleBlog";
 import Contacto from "./pages/tienda/Contacto";
@@ -55,6 +56,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/servicios" element={<Servicios />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:id" element={<DetalleBlog />} />
             <Route path="/contacto" element={<Contacto />} />

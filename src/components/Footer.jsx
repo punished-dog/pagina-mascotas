@@ -23,6 +23,7 @@ export default function Footer() {
             <ul className="list-unstyled small">
               <li><Link className="link-light link-underline-opacity-0" to="/productos">Productos</Link></li>
               <li><Link className="link-light link-underline-opacity-0" to="/ofertas">Ofertas</Link></li>
+              <li><Link className="link-light link-underline-opacity-0" to="/servicios">Servicios</Link></li>
               <li><Link className="link-light link-underline-opacity-0" to="/nosotros">Nosotros</Link></li>
               <li><Link className="link-light link-underline-opacity-0" to="/contacto">Contacto</Link></li>
             </ul>
