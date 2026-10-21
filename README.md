@@ -1,48 +1,99 @@
 # GuauMiau - Tienda de mascotas
 
-Proyecto de la Evaluacion Parcial 1 de Desarrollo Fullstack II (DSY1104).
-Es una tienda online hecha con HTML5, CSS y JavaScript, sin frameworks.
+Proyecto de Desarrollo Fullstack II (DSY1104).
 
-Incluye la tienda publica y el panel de administracion, en la carpeta `admin/`.
+En la Evaluacion Parcial 1 la tienda estaba hecha con HTML, CSS y JavaScript
+sin frameworks (queda guardada en el tag `entrega-1`). Para la Evaluacion
+Parcial 2 se paso todo a **React** con **Bootstrap**, se agregaron vistas nuevas
+y pruebas unitarias con **Jasmine** y **Karma**.
 
 ## Como ejecutarlo
 
-Se abre `pets.html` directamente en el navegador. Para que el localStorage
-funcione bien conviene levantarlo con un servidor local, por ejemplo con la
-extension Live Server de Visual Studio Code.
+Se necesita Node.js 18 o superior.
+
+```
+npm install
+npm run dev
+```
+
+Despues se abre la direccion que muestra la consola (normalmente
+http://localhost:5173).
+
+Otros comandos:
+
+| Comando | Para que sirve |
+|---|---|
+| `npm run build` | genera la version final en la carpeta `dist/` |
+| `npm run preview` | levanta la version de `dist/` |
+| `npm test` | corre las pruebas con Karma en Chrome sin ventana y genera la cobertura |
+
+`npm test` necesita tener Google Chrome instalado. El reporte de cobertura queda
+en `coverage/html/index.html` y el resumen en `coverage/cobertura.txt`.
+
+## Tecnologias
+
+- React 18 con Vite
+- React Router para las rutas
+- Bootstrap 5 y Bootstrap Icons para el diseño responsive
+- Context API para el carrito y la sesion
+- localStorage como base de datos simulada
+- Jasmine, Karma y Testing Library para las pruebas
 
 ## Estructura
 
 ```
 pagina-mascotas/
-├── pets.html              home de la tienda
-├── productos.html         listado con filtro por categoria
-├── detalle-producto.html  detalle del producto (?id=1)
-├── carrito.html           carrito de compras
-├── registro.html          registro de usuario
-├── login.html             inicio de sesion
-├── nosotros.html          informacion de la tienda
-├── servicios.html         servicios del local
-├── blogs.html             listado de blogs
-├── blog1.html, blog2.html detalle de cada blog
-├── contacto.html          formulario de contacto
-├── admin/                 panel de administracion
-│   ├── home.html
-│   ├── productos.html, producto-nuevo.html, producto-editar.html, producto-ver.html
-│   └── usuarios.html, usuario-nuevo.html, usuario-editar.html
-├── css/
-│   ├── estilos.css        estilos generales
-│   ├── responsive.css     media queries para tablet y celular
-│   └── admin.css          estilos del panel
-├── js/
-│   ├── productos.js       arreglo de productos y funciones para mostrarlos
-│   ├── carrito.js         carrito con localStorage
-│   ├── validaciones.js    validaciones de los formularios
-│   ├── regiones.js        arreglo de regiones y comunas
-│   ├── sesion.js          usuarios, roles y sesion
-│   └── admin.js           mantenedor de productos y usuarios
-└── fotos/                 imagenes del sitio
+├── public/fotos/           imagenes de productos, blogs y logo
+├── src/
+│   ├── main.jsx            punto de entrada
+│   ├── App.jsx             rutas de la tienda y del panel
+│   ├── estilos.css         colores de la marca y ajustes sobre Bootstrap
+│   ├── components/         componentes reutilizables (tarjeta, contador, aviso, boleta, ...)
+│   │   └── admin/          layout, menu, formularios y modal del panel
+│   ├── context/            CarritoContext y SesionContext
+│   ├── hooks/              useAgregarAlCarrito
+│   ├── data/               "base de datos" en localStorage con funciones CRUD
+│   ├── utils/              validaciones, calculos del carrito, formatos y reportes
+│   ├── pages/
+│   │   ├── tienda/         vistas publicas
+│   │   └── admin/          vistas del panel de administracion
+│   └── tests/              pruebas unitarias (*.spec.jsx)
+├── karma.conf.cjs          configuracion de Karma
+└── vite.config.js
 ```
+
+## Vistas
+
+**Tienda**
+
+| Ruta | Vista |
+|---|---|
+| `/` | Home con carrusel, categorias, mas vendidos y ofertas |
+| `/productos` | Catalogo con buscador, filtro por categoria y orden |
+| `/producto/:id` | Detalle del producto y productos relacionados |
+| `/categorias` y `/categorias/:nombre` | Categorias y productos de una categoria |
+| `/ofertas` | Productos con descuento |
+| `/carrito` | Carrito con cupones y calculo de despacho |
+| `/checkout` | Datos del cliente y direccion de entrega |
+| `/compra/exito/:id` | Pago correcto con la boleta |
+| `/compra/error/:id` | Pago rechazado con opcion de reintentar |
+| `/login`, `/registro` | Inicio de sesion y registro |
+| `/servicios`, `/nosotros`, `/blogs`, `/blogs/:id`, `/contacto` | Paginas informativas |
+
+**Panel de administracion** (`/admin`)
+
+| Ruta | Vista |
+|---|---|
+| `/admin` | Dashboard con ventas, stock critico y ultimas ordenes |
+| `/admin/ordenes`, `/admin/ordenes/:id` | Listado de ordenes y boleta |
+| `/admin/productos` | Listado con busqueda, filtro y CRUD |
+| `/admin/productos/nuevo`, `/admin/productos/:id/editar`, `/admin/productos/:id` | Crear, editar y ver producto |
+| `/admin/productos/criticos` | Productos con stock critico |
+| `/admin/productos/reporte` | Reporte de productos vendidos (descarga CSV) |
+| `/admin/categorias`, `/admin/categorias/nueva`, `/admin/categorias/:id/editar` | Mantenedor de categorias |
+| `/admin/usuarios`, `/admin/usuarios/nuevo`, `/admin/usuarios/:run`, `/admin/usuarios/:run/editar` | Mantenedor de usuarios con historial de compras |
+| `/admin/reportes` | Ventas por categoria, por producto y por dia con filtro de fechas |
+| `/admin/perfil` | Datos del usuario conectado |
 
 ## Usuarios de prueba
 
@@ -52,46 +103,75 @@ pagina-mascotas/
 | vendedor@duoc.cl | vende123 | Vendedor |
 | camila@gmail.com | cami2024 | Cliente |
 
-Los perfiles funcionan asi:
-
-- Cliente: compra en la tienda.
+- Cliente: compra en la tienda. Si intenta entrar al panel ve "Acceso restringido".
+- Vendedor: en el panel ve el dashboard, las ordenes, los productos (sin poder
+  crear, editar ni eliminar) y su perfil.
 - Administrador: entra a todo el panel.
-- Vendedor: en el panel solo ve el listado y el detalle de los productos, el
-  resto de las opciones se esconden.
 
-Al administrador y al vendedor les aparece el enlace al panel en la barra de
-sesion, y al iniciar sesion se les manda directo a `admin/home.html`.
+Los usuarios que se registran desde la tienda quedan como Cliente. Los otros
+perfiles se crean desde el panel.
 
-Los usuarios que se crean desde `registro.html` quedan siempre como Cliente. Los
-otros perfiles se crean desde el panel de administracion.
+## Base de datos simulada
 
-## Validaciones
+Los datos parten desde `src/data/datosIniciales.js` y la primera vez se copian
+a localStorage. Desde ahi todos los cambios quedan guardados en el navegador.
 
-- Correo: obligatorio, maximo 100 caracteres y solo @duoc.cl, @profesor.duoc.cl
-  o @gmail.com.
-- Contraseña: entre 4 y 10 caracteres.
-- Contacto: nombre obligatorio (100), comentario obligatorio (500).
-- Registro: run sin puntos ni guion entre 7 y 9 caracteres y con el digito
-  verificador calculado con modulo 11, nombre (50), apellidos (100), direccion
-  (300), region y comuna enlazadas, confirmacion de contraseña, fecha de
-  nacimiento opcional.
-- Producto (panel): codigo minimo 3 caracteres, nombre (100), descripcion
-  opcional (500), precio mayor o igual a 0 y puede tener decimales, stock entero
-  mayor o igual a 0, stock critico opcional y categoria obligatoria.
+| Clave | Contenido |
+|---|---|
+| `gm_productos` | productos |
+| `gm_categorias` | categorias |
+| `gm_usuarios` | usuarios |
+| `gm_ordenes` | ordenes y boletas |
+| `gm_carrito`, `gm_cupon` | carrito y cupon aplicado |
+| `gm_sesion` | usuario conectado (sin contraseña) |
 
-Todas se revisan mientras el usuario escribe y otra vez al enviar el formulario.
+Para volver a los datos iniciales basta con borrar esas claves desde las
+herramientas del navegador (Application > Local Storage).
 
-## Reglas del carrito
+## Reglas del carrito y la compra
 
 - No se puede agregar mas cantidad que el stock del producto.
 - La cantidad minima es 1, si baja de ahi el producto se elimina.
 - El despacho cuesta $3.990 y es gratis en compras desde $30.000.
 - Cupones: GUAUMIAU10 descuenta 10% y MASCOTA5 descuenta 5%.
 - Para pagar hay que tener la sesion iniciada.
+- Al pagar se crea la orden, se descuenta el stock y se vacia el carrito.
+- En el checkout hay una casilla para simular un pago rechazado y probar la
+  pagina de error. En ese caso la orden queda como Rechazada y el carrito no se
+  borra.
 
-El carrito se guarda en localStorage con la clave `carrito`, los productos que
-edita el administrador en `productos` y los usuarios en `usuarios`.
+## Validaciones
 
-## Pendiente para las proximas entregas
+- Correo: obligatorio, maximo 100 caracteres y solo @duoc.cl, @profesor.duoc.cl
+  o @gmail.com.
+- Contraseña: entre 4 y 10 caracteres.
+- Run: sin puntos ni guion, entre 7 y 9 caracteres y con el digito verificador
+  calculado con modulo 11.
+- Registro y usuarios: nombre (50), apellidos (100), direccion (300), region y
+  comuna enlazadas y confirmacion de contraseña.
+- Checkout: nombre, apellidos, correo, calle, region y comuna obligatorios.
+- Producto: codigo minimo 3 caracteres y sin repetir, nombre (100), descripcion
+  opcional (500), precio y stock enteros mayores o iguales a 0, oferta entre 0 y
+  90% y categoria obligatoria.
+- Categoria: nombre obligatorio y sin repetir.
 
-- Conectar el sistema a una base de datos en vez de localStorage.
+Los errores aparecen debajo de cada campo al enviar el formulario y se borran
+cuando el usuario corrige el campo.
+
+## Pruebas
+
+Las pruebas estan en `src/tests/`:
+
+- `componentes/`: renderizado, props, estado y eventos de los componentes
+  (TarjetaProducto, ListaProductos, Contador, Aviso, CampoTexto,
+  FiltroCategorias, FormularioProducto, Boleta, RutaProtegida y los contextos).
+- `logica/`: validaciones, calculos del carrito y reportes.
+- `datos/`: funciones CRUD usando un localStorage simulado con `spyOn`.
+
+Se usan espias de Jasmine (`jasmine.createSpy`) para revisar que los componentes
+llamen a sus funciones con los datos correctos, y `jasmine.clock()` para probar
+el aviso que se cierra solo.
+
+## Pendiente para la proxima entrega
+
+- Cambiar localStorage por una API con base de datos real.
