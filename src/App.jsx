@@ -30,6 +30,11 @@ import OrdenesAdmin from "./pages/admin/OrdenesAdmin";
 import VerOrden from "./pages/admin/VerOrden";
 import CategoriasAdmin from "./pages/admin/CategoriasAdmin";
 import EditorCategoria from "./pages/admin/EditorCategoria";
+import UsuariosAdmin from "./pages/admin/UsuariosAdmin";
+import EditorUsuario from "./pages/admin/EditorUsuario";
+import VerUsuario from "./pages/admin/VerUsuario";
+import Reportes from "./pages/admin/Reportes";
+import Perfil from "./pages/admin/Perfil";
 
 export default function App() {
   return (
@@ -69,6 +74,13 @@ export default function App() {
             <Route path="categorias" element={<RutaProtegida soloAdmin><CategoriasAdmin /></RutaProtegida>} />
             <Route path="categorias/nueva" element={<RutaProtegida soloAdmin><EditorCategoria /></RutaProtegida>} />
             <Route path="categorias/:id/editar" element={<RutaProtegida soloAdmin><EditorCategoria /></RutaProtegida>} />
+            <Route path="usuarios" element={<RutaProtegida soloAdmin><UsuariosAdmin /></RutaProtegida>} />
+            <Route path="usuarios/nuevo" element={<RutaProtegida soloAdmin><EditorUsuario /></RutaProtegida>} />
+            <Route path="usuarios/:run" element={<RutaProtegida soloAdmin><VerUsuario /></RutaProtegida>} />
+            <Route path="usuarios/:run/editar" element={<RutaProtegida soloAdmin><EditorUsuario /></RutaProtegida>} />
+            <Route path="reportes" element={<RutaProtegida soloAdmin><Reportes /></RutaProtegida>} />
+            <Route path="perfil" element={<Perfil />} />
+            <Route path="*" element={<div className="alert alert-warning">Esta seccion del panel no existe.</div>} />
           </Route>
         </Routes>
       </CarritoProvider>
