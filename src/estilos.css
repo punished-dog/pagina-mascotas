@@ -45,3 +45,47 @@ a {
 .bg-marca-suave {
   background-color: var(--marca-suave);
 }
+
+.imagen-carrusel {
+  max-height: 320px;
+  object-fit: contain;
+}
+
+.imagen-detalle {
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.tarjeta-categoria img,
+.tarjeta-producto img {
+  height: 160px;
+  object-fit: contain;
+}
+
+.tarjeta-categoria,
+.tarjeta-producto {
+  transition: transform 0.15s;
+}
+
+.tarjeta-categoria:hover,
+.tarjeta-producto:hover {
+  transform: translateY(-3px);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 3rem;
+}
+
+.carousel-indicators [data-indicador] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+}
+
+.list-group {
+  --bs-list-group-active-bg: var(--marca);
+  --bs-list-group-active-border-color: var(--marca);
+  --bs-list-group-active-color: #212529;
+}
