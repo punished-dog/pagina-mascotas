@@ -7,6 +7,10 @@ import Productos from "./pages/tienda/Productos";
 import DetalleProducto from "./pages/tienda/DetalleProducto";
 import Categorias from "./pages/tienda/Categorias";
 import Ofertas from "./pages/tienda/Ofertas";
+import Carrito from "./pages/tienda/Carrito";
+import Checkout from "./pages/tienda/Checkout";
+import CompraExito from "./pages/tienda/CompraExito";
+import CompraError from "./pages/tienda/CompraError";
 import NoEncontrado from "./pages/tienda/NoEncontrado";
 
 export default function App() {
@@ -21,6 +25,10 @@ export default function App() {
             <Route path="/categorias" element={<Categorias />} />
             <Route path="/categorias/:nombre" element={<Categorias />} />
             <Route path="/ofertas" element={<Ofertas />} />
+            <Route path="/carrito" element={<Carrito />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/compra/exito/:id" element={<CompraExito />} />
+            <Route path="/compra/error/:id" element={<CompraError />} />
             <Route path="*" element={<NoEncontrado />} />
           </Route>
         </Routes>

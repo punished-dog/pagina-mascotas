@@ -89,3 +89,22 @@ a {
   --bs-list-group-active-border-color: var(--marca);
   --bs-list-group-active-color: #212529;
 }
+
+@media print {
+  header,
+  footer,
+  nav,
+  .no-imprimir {
+    display: none !important;
+  }
+
+  .boleta {
+    box-shadow: none !important;
+  }
+}
+
+.btn-link {
+  --bs-btn-color: var(--marca-oscuro);
+  --bs-btn-hover-color: var(--marca-oscuro);
+  --bs-btn-active-color: var(--marca-oscuro);
+}
