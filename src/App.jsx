@@ -18,6 +18,14 @@ import Blogs from "./pages/tienda/Blogs";
 import DetalleBlog from "./pages/tienda/DetalleBlog";
 import Contacto from "./pages/tienda/Contacto";
 import NoEncontrado from "./pages/tienda/NoEncontrado";
+import RutaProtegida from "./components/RutaProtegida";
+import LayoutAdmin from "./components/admin/LayoutAdmin";
+import Dashboard from "./pages/admin/Dashboard";
+import ProductosAdmin from "./pages/admin/ProductosAdmin";
+import EditorProducto from "./pages/admin/EditorProducto";
+import VerProducto from "./pages/admin/VerProducto";
+import ProductosCriticos from "./pages/admin/ProductosCriticos";
+import ReporteProductos from "./pages/admin/ReporteProductos";
 
 export default function App() {
   return (
@@ -42,6 +50,16 @@ export default function App() {
             <Route path="/blogs/:id" element={<DetalleBlog />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="*" element={<NoEncontrado />} />
+          </Route>
+
+          <Route path="/admin" element={<RutaProtegida><LayoutAdmin /></RutaProtegida>}>
+            <Route index element={<Dashboard />} />
+            <Route path="productos" element={<ProductosAdmin />} />
+            <Route path="productos/nuevo" element={<RutaProtegida soloAdmin><EditorProducto /></RutaProtegida>} />
+            <Route path="productos/criticos" element={<ProductosCriticos />} />
+            <Route path="productos/reporte" element={<ReporteProductos />} />
+            <Route path="productos/:id" element={<VerProducto />} />
+            <Route path="productos/:id/editar" element={<RutaProtegida soloAdmin><EditorProducto /></RutaProtegida>} />
           </Route>
         </Routes>
       </CarritoProvider>

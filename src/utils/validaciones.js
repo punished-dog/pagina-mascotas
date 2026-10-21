@@ -141,3 +141,30 @@ export function validarContacto(datos) {
     comentario: validarTexto(datos.comentario, 500, true, "comentario")
   };
 }
+
+export function validarProducto(datos) {
+  const errores = {
+    codigo: validarTexto(datos.codigo, 20, true, "codigo"),
+    nombre: validarTexto(datos.nombre, 100, true, "nombre"),
+    descripcion: validarTexto(datos.descripcion, 500, false, "descripcion"),
+    precio: validarNumero(datos.precio, 0, true, true, "Precio"),
+    oferta: validarNumero(datos.oferta, 0, true, false, "Oferta"),
+    stock: validarNumero(datos.stock, 0, true, true, "Stock"),
+    stockCritico: validarNumero(datos.stockCritico, 0, true, false, "Stock critico"),
+    categoria: validarSeleccion(datos.categoria, "categoria")
+  };
+  if (errores.codigo === "" && datos.codigo.trim().length < 3) {
+    errores.codigo = "El codigo debe tener al menos 3 caracteres.";
+  }
+  if (errores.oferta === "" && Number(datos.oferta) > 90) {
+    errores.oferta = "La oferta no puede ser mayor a 90%.";
+  }
+  return errores;
+}
+
+export function validarCategoria(datos) {
+  return {
+    nombre: validarTexto(datos.nombre, 50, true, "nombre"),
+    descripcion: validarTexto(datos.descripcion, 300, false, "descripcion")
+  };
+}

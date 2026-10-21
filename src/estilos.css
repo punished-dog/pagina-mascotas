@@ -119,3 +119,30 @@ a {
   max-height: 280px;
   object-fit: cover;
 }
+
+.min-w-0 {
+  min-width: 0;
+}
+
+@media (min-width: 992px) {
+  .panel-lateral {
+    width: 250px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+}
+
+.menu-admin .nav-link {
+  color: #495057;
+}
+
+.menu-admin .nav-link:hover {
+  background-color: var(--marca-suave);
+}
+
+.menu-admin .nav-link.active {
+  background-color: var(--marca);
+  color: #212529;
+}
