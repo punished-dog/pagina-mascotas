@@ -1,15 +1,20 @@
+import { Routes, Route } from "react-router-dom";
 import { SesionProvider } from "./context/SesionContext";
 import { CarritoProvider } from "./context/CarritoContext";
+import LayoutTienda from "./components/LayoutTienda";
+import Home from "./pages/tienda/Home";
+import NoEncontrado from "./pages/tienda/NoEncontrado";
 
 export default function App() {
   return (
     <SesionProvider>
       <CarritoProvider>
-        <main className="container py-5 text-center">
-          <img src="/fotos/logo.png" alt="logo de GuauMiau" width="120" />
-          <h1 className="mt-3">GuauMiau</h1>
-          <p className="text-secondary">Tienda de mascotas, ahora en React.</p>
-        </main>
+        <Routes>
+          <Route element={<LayoutTienda />}>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NoEncontrado />} />
+          </Route>
+        </Routes>
       </CarritoProvider>
     </SesionProvider>
   );
