@@ -1,0 +1,47 @@
+:root {
+  --marca: #f5a623;
+  --marca-oscuro: #d98b0c;
+  --marca-suave: #fff4e0;
+}
+
+body {
+  background-color: #f7f7f8;
+}
+
+a {
+  color: var(--marca-oscuro);
+}
+
+.btn-primary {
+  --bs-btn-color: #212529;
+  --bs-btn-bg: var(--marca);
+  --bs-btn-border-color: var(--marca);
+  --bs-btn-hover-color: #212529;
+  --bs-btn-hover-bg: var(--marca-oscuro);
+  --bs-btn-hover-border-color: var(--marca-oscuro);
+  --bs-btn-active-color: #212529;
+  --bs-btn-active-bg: var(--marca-oscuro);
+  --bs-btn-active-border-color: var(--marca-oscuro);
+  --bs-btn-disabled-color: #6c757d;
+  --bs-btn-disabled-bg: #e9ecef;
+  --bs-btn-disabled-border-color: #e9ecef;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--marca-oscuro);
+  --bs-btn-border-color: var(--marca);
+  --bs-btn-hover-color: #212529;
+  --bs-btn-hover-bg: var(--marca);
+  --bs-btn-hover-border-color: var(--marca);
+  --bs-btn-active-color: #212529;
+  --bs-btn-active-bg: var(--marca-oscuro);
+  --bs-btn-active-border-color: var(--marca-oscuro);
+}
+
+.text-marca {
+  color: var(--marca-oscuro);
+}
+
+.bg-marca-suave {
+  background-color: var(--marca-suave);
+}
