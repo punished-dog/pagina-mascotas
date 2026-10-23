@@ -13,18 +13,16 @@ Se necesita Node.js 18 o superior.
 
 ```
 npm install
-npm run dev
+npm start
 ```
 
-Despues se abre la direccion que muestra la consola (normalmente
-http://localhost:5173).
+Se abre solo en el navegador en http://localhost:3000.
 
 Otros comandos:
 
 | Comando | Para que sirve |
 |---|---|
-| `npm run build` | genera la version final en la carpeta `dist/` |
-| `npm run preview` | levanta la version de `dist/` |
+| `npm run build` | genera la version final en la carpeta `build/` |
 | `npm test` | corre las pruebas con Karma en Chrome sin ventana y genera la cobertura |
 
 `npm test` necesita tener Google Chrome instalado. El reporte de cobertura queda
@@ -32,7 +30,7 @@ en `coverage/html/index.html` y el resumen en `coverage/cobertura.txt`.
 
 ## Tecnologias
 
-- React 18 con Vite
+- React 18 con Create React App (react-scripts), igual que el proyecto de clases
 - React Router para las rutas
 - Bootstrap 5 y Bootstrap Icons para el diseño responsive
 - Context API para el carrito y la sesion
@@ -43,9 +41,11 @@ en `coverage/html/index.html` y el resumen en `coverage/cobertura.txt`.
 
 ```
 pagina-mascotas/
-├── public/fotos/           imagenes de productos, blogs y logo
+├── public/
+│   ├── index.html          pagina base donde se monta React
+│   └── fotos/              imagenes de productos, blogs y logo
 ├── src/
-│   ├── main.jsx            punto de entrada
+│   ├── index.js            punto de entrada
 │   ├── App.jsx             rutas de la tienda y del panel
 │   ├── estilos.css         colores de la marca y ajustes sobre Bootstrap
 │   ├── components/         componentes reutilizables (tarjeta, contador, aviso, boleta, ...)
@@ -57,9 +57,8 @@ pagina-mascotas/
 │   ├── pages/
 │   │   ├── tienda/         vistas publicas
 │   │   └── admin/          vistas del panel de administracion
-│   └── tests/              pruebas unitarias (*.spec.jsx)
-├── karma.conf.cjs          configuracion de Karma
-└── vite.config.js
+│   └── tests/              pruebas unitarias (*.spec.js)
+└── karma.conf.js           configuracion de Karma (la vista en clases)
 ```
 
 ## Vistas

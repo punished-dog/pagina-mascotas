@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Aviso({ mensaje, tipo = "exito", onCerrar, duracion = 2500 }) {
+  const cerrar = useRef(onCerrar);
+  cerrar.current = onCerrar;
+
   useEffect(() => {
     if (!mensaje) {
       return undefined;
     }
-    const temporizador = setTimeout(onCerrar, duracion);
+    const temporizador = setTimeout(() => cerrar.current(), duracion);
     return () => clearTimeout(temporizador);
-  }, [mensaje]);
+  }, [mensaje, duracion]);
 
   if (!mensaje) {
     return null;
